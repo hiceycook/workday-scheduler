@@ -1,6 +1,6 @@
 let now = moment();
 
-//HAVE currentDay display the current day //
+// HAVE currentTime DISPLAY THE CURRENT DAY AND TIME USING MOMENT.JS //
 
 function updateTime() {
     currentTime = now.format("LLLL");
@@ -9,45 +9,47 @@ function updateTime() {
 
 
 
-// Function to check the current hour and change background color
-// of task depending on hour
+// FUNCTION TO CHECK CURRENT TIME WITH SCHEDULE TIME, AND CHANGE COLOR ACCORDINGLY //
 function hourColor() {
     // Run hourComparison for each hour of work day
     $(".time-block").each(hourCompare);
 }
 
 $(".time-block").each(function () {
-    // selects the span of each child inside the hour class
+    // SELECTS SPAN OF EACH .HOUR CLASS ELEMENT //
     var scheduleTime = $(".hour span", this);
     let currentHour = now.hour();
 
-    // converts the span into an integer
+    //CONVERTS SPAN TO INTEGER FOR COMPARISON //
     var scheduleHour = parseInt(scheduleTime.text());
 
-    // checks to see if the current hour is greater, less than, or equal to the schedule hour
+    //COMPARES TIMES
     if (currentHour > scheduleHour) {
-        // if the currentHour is greater than the scheduleHour adds the class of past to the time-block
+        //IF CURRENT HOUR IS GREATER THAN SCHEDULE HOUR, ADD CLASS "PAST"
         $(this).addClass("past");
     } else if (currentHour < scheduleHour) {
-        // if the currentHour is less than the scheduleHour adds the class of future to the time-block
+        //IF CURRENT HOUR IS LESS THAN SCHEDULE HOUR, ADD CLASS "FUTURE"
         $(this).addClass("future");
+        $(this).removeClass("past");
     } else {
-        // otherwise if the times are equal it adds the class of present to the time-block
+        // IF TIMES ARE EQUAL ADD CLASS PRESENT
         $(this).addClass("present");
+        $(this).removeClass("past");
+        $(this).removeClass("future");
     };
 });
 
-// Function to save user input into localStorage //
+// SAVE FUNCTION //
 
 function saveText() {
     let textContent = $(this).siblings(".text-content").val();
     let hour = $(this).parent().attr("id");
 
-    // add the textcontent value and hour ID to local storage
+    // ADD TEXTCONTENT AND HOUR TO LOCAL STORAGE
     localStorage.setItem(hour, textContent);
 };
 
-// Call saveText on save button click
+// CALL SAVETEXT ON BUTTON CLICK //
 $(".saveBtn").on("click", saveText);
 
 function getLocalStorage() {
@@ -64,6 +66,6 @@ function getLocalStorage() {
 };
 
 
-// Call all the functions
+// CALL FUNCTIONS
 getLocalStorage();
 updateTime();
