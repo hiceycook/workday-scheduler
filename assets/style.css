@@ -4,6 +4,11 @@ body {
     line-height: 1;
   }
   
+
+  .current-time{
+    color: #ff6961;
+    font-size:40px;
+  }
   textarea{
     background: transparent;
     border: none;
@@ -26,9 +31,22 @@ body {
   }
   
   .time-block{
+    display:flex;
     text-align: center;
     border-radius: 15px;
   }
+
+  .hour{
+    width:10%;
+    font-weight: bolder;
+  }
+
+  .text-content{
+    width: 80%;
+    text-align: center;
+    border-bottom: 1px solid black;
+  }
+
   
   .row {
     white-space: pre-wrap;
@@ -58,14 +76,15 @@ body {
   }
   
   .saveBtn {
-    border-left: 1px solid black;
+    border: 1px solid black;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     background-color: #06AED5;
     color: white;
+    width: 10%;
   }
   
-  .saveBtn i:hover {
+  .saveBtn:hover {
     font-size: 20px;
     transition: all .3s ease-in-out;
   }
