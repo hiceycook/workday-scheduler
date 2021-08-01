@@ -1,10 +1,6 @@
 # workday-scheduler
 Simple workday scheduling application
 
-
-# password-generator
-
-
 ## Purpose
 This is a simple workday scheduling app. 
 
